@@ -3,7 +3,9 @@ import arrowSvg from "../images/down-arrow.svg";
 import PropTypes from "prop-types";
 import image from "../images/v2.png";
 
-const imageAltText = "Adult female in office setting leaning against a glass wall while holding a platinum Microsoft Surface Pro 7 in tablet mode preparing to write with Microsoft Surface Pen";
+const imageAltText = `A freshly minted BTech graduate from Maharshi Dayanand University, my journey in tech has been marked by hands-on experiences and a relentless pursuit of knowledge. I concurrently enhance my own expertise in Python, Java and the MERN stack.
+
+Recently, leading a team at UptoSkills, we designed an innovative browser-based code editor, melding React.js with Tailwind CSS for a seamless UI, and crafting robust back-end solutions. This project not only showcased my technical prowess in full stack development but also distilled a blend of collaboration, leadership, and a commitment to delivering cutting-edge web technologies. `;
 
 const Home = ({ name, title }) => {
   const sectionStyle = {
