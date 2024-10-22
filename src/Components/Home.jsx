@@ -1,40 +1,80 @@
-/**
- * Home component
- *
- * The section at the top of the page to display image of your
- * choice, name and title that describes your career focus.
- */
-
 import React from "react";
 import arrowSvg from "../images/down-arrow.svg";
 import PropTypes from "prop-types";
-
-/**
- * Home background image
- *
- * Below is a sample image. Upload the image of your choice into the "images"
- * directory and import here for use. Then, set imageAltText to string that 
- * represents what you see in that image.
- *
- *
- * Need an image? Check out https://unsplash.com to download a photo you
- * freely use on your site.
- */
-import image from "../images/woman-with-tablet.jpg";
+import image from "../images/v2.png";
 
 const imageAltText = "Adult female in office setting leaning against a glass wall while holding a platinum Microsoft Surface Pro 7 in tablet mode preparing to write with Microsoft Surface Pen";
 
 const Home = ({ name, title }) => {
+  const sectionStyle = {
+    position: 'relative',
+    minHeight: '100vh',
+    overflow: 'hidden',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+  };
+
+  const backgroundStyle = {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    zIndex: 1,
+  };
+
+  const textContainerStyle = {
+    position: 'relative',
+    zIndex: 2,
+    marginLeft: '2rem',
+  };
+
+  const h1Style = {
+    fontSize: '2.5rem',
+    color: 'white',
+  };
+
+  const h2Style = {
+    fontSize: '1.5rem',
+    color: 'white',
+  };
+
+  const arrowContainerStyle = {
+    position: 'relative',
+    zIndex: 2,
+    marginTop: '2rem',
+  };
+
+  const arrowStyle = {
+    height: '3rem',
+    width: '3rem',
+  };
+
+  // Responsive styles
+  const mediaQuery = window.matchMedia('(max-width: 768px)');
+  if (mediaQuery.matches) {
+    textContainerStyle.marginLeft = '1rem';
+    h1Style.fontSize = '2rem';
+    h2Style.fontSize = '1.25rem';
+    arrowStyle.height = '2.5rem';
+    arrowStyle.width = '2.5rem';
+  }
+
+  const mediaQuerySmall = window.matchMedia('(max-width: 480px)');
+  if (mediaQuerySmall.matches) {
+    textContainerStyle.marginLeft = '0.5rem';
+    h1Style.fontSize = '1.5rem';
+    h2Style.fontSize = '1rem';
+    arrowStyle.height = '2rem';
+    arrowStyle.width = '2rem';
+  }
+
   return (
-    <section id="home" className="min-height">
-      <img className="background" src={image} alt="" />
-      <div style={{ position: "absolute", top: "5rem", left: "2rem", width: "17rem" }}>
-        <h1>{name}</h1>
-        <h2>{title}</h2>
-      </div>
-      <div style={{ position: "absolute", bottom: "3rem", left: "50%" }}>
-        <img src={arrowSvg} style={{ height: "3rem", width: "3rem" }} alt={imageAltText} />
-      </div>
+    <section id="home" style={sectionStyle}>
+      <img style={backgroundStyle} src={image} alt={imageAltText} />
     </section>
   );
 };

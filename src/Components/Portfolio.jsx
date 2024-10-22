@@ -1,80 +1,111 @@
-/**
- * Portfolio component
- *
- * Highlights some of  your creations. These can be designs, websites,
- * open source contributions, articles you've written and more.
- *
- * This is a great area for you to to continually add to and refine
- * as you continue to learn and create.
- */
-
-import React from "react";
-
-/**
- * Desk image
- *
- * Below is a sample desk image. Feel free to update this to an image of your choice,
- * updating below imageAltText to string that represents what you see in that image.
- *
- * Need an image? Check out https://unsplash.com to download a photo you
- * freely use on your site.
- */
+import React, { useState, useEffect } from "react";
 import image from "../images/design-desk.jpeg";
 
 const imageAltText = "desktop with books and laptop";
 
-/**
- * Project list
- *
- * An array of objects that will be used to display for your project
- * links section. Below is a sample, update to reflect links you'd like to highlight.
- */
+// Updated project/work experience details
 const projectList = [
   {
-    title: "10 Things To Know About Azure Static Web Apps 🎉",
-    description:
-      "Collaboration to create a beginner friendly article to help explain Azure Static Web Apps and tooling to get started.",
-    url: "https://dev.to/azure/10-things-to-know-about-azure-static-web-apps-3n4i",
+    title: "Check my LinkedIn profile",
+    description:"You can checkout skills and experience etc.",
+    url: "https://www.linkedin.com/in/vaibhav-vats-",
   },
   {
-    title: "Web Development for Beginners",
+    title: "Check My Google For Developer Profile",
     description:
-      "Contributed sketch note imagery to accompany each lesson. These help provide visual representation of what is being taught.",
-    url: "https://github.com/microsoft/web-dev-for-beginners",
+      "Developed and maintained responsive web applications using the MERN stack. Implemented design principles to ensure accessibility across various devices.",
+    url: "https://g.dev/vaibhavvats",
   },
   {
-    title: "My Resume Site",
-    description:
-      "Created from Microsoft's resume workshop and deployed to GitHub pages. Includes my experience and design abilities.",
-    url: "https://github.com/microsoft/workshop-library/tree/main/full/build-resume-website",
+    title: "Web Development Job Simulation",
+    description: "Planning the Website, Creating a Form",
+    url: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Moreton%20Bay%20Regional%20Council/7q8DN5enMzSHqLwev_Moreton%20Bay%20Regional%20Council_ri8CK7waojBBKMjzq_1709180758211_completion_certificate.pdf",
   },
   {
-    title: "GitHub Codespaces and github.dev",
-    description:
-      "Video interview to explain when to use GitHub.dev versus GitHub Codespaces, and how best to use each tool.",
-    url: "https://www.youtube.com/watch?v=c3hHhRME_XI",
+    title: "Introduction to Software Engineering Job Simulation",
+    description: "Create a Website, Financial Cybersecurity, Write a Web Hosting Proposal.",
+    url: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Commonwealth%20Bank/wJMjCSKFhuj97x6F3_Commonwealth%20Bank_ri8CK7waojBBKMjzq_1716889207606_completion_certificate.pdf",
   },
 ];
 
 const Portfolio = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  // Listen for window resize to adjust the layout dynamically
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <section className="padding" id="portfolio">
-      <h2 style={{ textAlign: "center" }}>Portfolio</h2>
-      <div style={{ display: "flex", flexDirection: "row", paddingTop: "3rem" }}>
-        <div style={{ maxWidth: "40%", alignSelf: "center" }}>
+    <section id="portfolio" style={{ padding: isMobile ? "5px" : "20px" }}>
+      <h2 style={{ textAlign: "center", fontSize: "2rem" }}>Portfolio</h2>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: isMobile ? "column" : "row", // Adjust layout for mobile/desktop
+          justifyContent: "space-between",
+          alignItems: isMobile ? "center" : "flex-start",
+          paddingTop: "3rem",
+          paddingRight: isMobile ? "15px" : "20px", // Add right padding for mobile
+          paddingLeft: isMobile ? "15px" : "0", // Add left padding for mobile
+        }}
+      >
+        {/* Image section */}
+        <div
+          style={{
+            maxWidth: isMobile ? "100%" : "40%", // Full width on mobile, 40% on desktop
+            marginBottom: isMobile ? "20px" : "0", // Add margin for mobile layout
+            alignSelf: "center",
+          }}
+        >
           <img
             src={image}
-            style={{ height: "90%", width: "100%", objectFit: "cover" }}
+            style={{
+              width: "100%",
+              height: "auto",
+              objectFit: "cover",
+              borderRadius: "8px",
+            }}
             alt={imageAltText}
           />
         </div>
-        <div className="container">
+
+        {/* Projects section */}
+        <div
+          style={{
+            maxWidth: isMobile ? "100%" : "55%", // Full width on mobile, 55% on desktop
+            marginRight: isMobile ? "10px" : "20px", // Add margin for small devices
+            paddingRight: isMobile ? "10px" : "20px", // Add padding for small devices
+            paddingLeft: isMobile ? "10px" : "0", // Add padding on the left for mobile
+          }}
+        >
           {projectList.map((project) => (
-            <div className="box" key={project.title}>
-              <a href={project.url} target="_blank" rel="noopener noreferrer">
-                <h3 style={{ flexBasis: "40px" }}>{project.title}</h3>
+            <div
+              key={project.title}
+              style={{
+                marginBottom: "2rem",
+                padding: "1rem",
+                border: "1px solid #e0e0e0",
+                borderRadius: "8px",
+              }}
+            >
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: "none", color: "#0070f3" }}
+              >
+                <h3 style={{ marginBottom: "0.5rem", fontSize: "1.5rem" }}>
+                  {project.title}
+                </h3>
               </a>
-              <p className="small">{project.description}</p>
+              <p style={{ margin: "0.5rem 0", fontSize: "1rem" }}>
+                {project.description}
+              </p>
             </div>
           ))}
         </div>

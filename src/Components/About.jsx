@@ -1,84 +1,90 @@
-/**
- * About component
- *
- * Space for you to describe more about yourself.
- */
-
 import React from "react";
-
-/**
- * About background image
- *
- * Below is a sample image. Upload the image of your choice into the "images"
- * directory and import here for use. Then, set imageAltText to string that 
- * represents what you see in that image.
- *
- * Need an image? Check out https://unsplash.com to download a image you
- * freely use on your site.
- */
 import image from "../images/motion-background.jpg";
 
 const imageAltText = "purple and blue abstract background";
 
-/**
- * Sort description that expands on your title on the Home component.
- */
 const description =
-  "I'm a UI/UX student studying at Barnett Technical University. I enjoy creating unique and simplistic user interfaces in creative ways.";
+  "I'm a 'Full stack web developer' recently graduated from CBS Group of Institutions. I've 6 months of experience in the field of web development as a full stack developer intern in UptoSkills, Innobyte Services, and CodTech IT Solutions.";
 
-/**
- * List of some of skills or technologies you work on, are learning,
- * passionate about, or enjoy,
- */
 const skillsList = [
-  "Web design",
-  "User experience",
-  "Inclusive design",
-  "Focus group testing",
-  "Mobile user interfaces",
-  "Graphic design",
+  "Frontend Development",
+  "Backend Development",
+  "SEO",
+  "Full Stack Development",
+  "Software Development",
 ];
 
-/**
- * Use this to give more information about what you are passionate about,
- * how you best work, or even a quote. This will help someone learn more
- * about you on a professional level.
- */
 const detailOrQuote =
-  "I am passionate about solving problems in new creative ways to drive innovation. By leveraging my UI/UX experience I continually look for new and better ways to make tech accessible by all.";
+  "I am passionate about web development and enjoy creating websites. By leveraging my software development experience, I continually look for new and better ways to make tech accessible to all.";
 
 const About = () => {
   return (
-    <section className="padding" id="about">
-      <img className="background" src={image} alt={imageAltText} />
+    <section
+      style={{
+        position: "relative",
+        overflow: "hidden",
+        padding: "4px", // Added padding of 4px to the parent
+      }}
+      id="about"
+    >
+      <img
+        className="background"
+        src={image}
+        alt={imageAltText}
+        style={{
+          width: "100%",
+          height: "auto",
+          position: "absolute",
+          top: 0,
+          left: 0,
+          zIndex: -1,
+          opacity: 0.8,
+        }}
+      />
       <div
         style={{
           backgroundColor: "white",
-          width: "50%",
-          padding: "4rem",
+          width: "90%",
+          maxWidth: "600px",
+          padding: "2rem",
           margin: "3rem auto",
           textAlign: "center",
+          borderRadius: "8px",
+          boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
         }}
       >
-        <h2>About Myself</h2>
-        <p className="large">{description}</p>
+        <h2 style={{ fontSize: "1.5rem" }}>About Myself</h2>
+        <p className="large" style={{ fontSize: "1rem" }}>{description}</p>
         <hr />
         <ul
           style={{
             textAlign: "left",
             columns: 2,
-            fontSize: "1.25rem",
-            margin: "2rem 3rem",
-            gap: "3rem",
+            fontSize: "1rem",
+            margin: "2rem 0",
+            padding: 0,
+            listStyle: "none",
           }}
         >
           {skillsList.map((skill) => (
-            <li key={skill}>{skill}</li>
+            <li key={skill} style={{padding: "5px", marginBottom: "0.5rem" }}>
+              {skill}
+            </li>
           ))}
         </ul>
         <hr />
-        <p style={{ padding: "1rem 3rem 0" }}>{detailOrQuote}</p>
+        <p style={{ padding: "1rem 0 0", fontSize: "1rem" }}>{detailOrQuote}</p>
       </div>
+      <style>
+        {`
+          @media (max-width: 480px) {
+            div {
+              padding-left: 0 !important;
+              padding-right: 0 !important;
+            }
+          }
+        `}
+      </style>
     </section>
   );
 };
