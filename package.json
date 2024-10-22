@@ -1,9 +1,9 @@
 {
+  "homepage":"https://github.com/vaibhavvatsbhartiya/codespaces-project-template-js/tree/Vaibhavchangetoreactapp",
   "name": "educator-js-codespace-template",
   "version": "1.0.0",
   "description": "Educator JS Codespace Template",
   "source": "src/index.html",
-  "homepage": "https://github.com/microsoft/codespaces-teaching-template-js#readme",
   "scripts": {
     "start": "parcel",
     "build": "parcel build",
@@ -16,6 +16,7 @@
     "url": "git+https://github.com/microsoft/codespaces-teaching-template-js.git"
   },
   "author": "Microsoft",
+  "user":"Vaibhav Vats",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/microsoft/codespaces-teaching-template-js/issues"
